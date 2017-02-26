@@ -127,13 +127,18 @@ public class FileUtils {
     }
 
     public static String getFilePath(Context context, String path) {
+        File file = null;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
-            return new File(Environment.getExternalStorageDirectory().getPath(),
-                    new File(ROOT_DEFAULT_PATH, path).getPath()).getPath();
+            file = new File(Environment.getExternalStorageDirectory().getPath(),
+                    new File(ROOT_DEFAULT_PATH, path).getPath());
         } else {
-            return new File(context.getFilesDir().getPath(), path).getPath();
+            file = new File(context.getFilesDir().getPath(), path);
         }
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return file.getPath();
     }
 
 }
