@@ -14,7 +14,7 @@ public class FileUtils {
     /**
      * 根路径
      **/
-    public final static String ROOT_DEFAULT_PATH = "/teamtalking/pms/";
+    public final static String ROOT_DEFAULT_PATH = "/yhq/";
     /**
      * 缓存子路径
      **/
@@ -34,23 +34,29 @@ public class FileUtils {
     /**
      * 日志存放子路径，为FILE_PATH的子路径
      **/
-    public final static String LOG_PATH = "logs";
+    public final static String LOG_PATH = "logs/";
     /**
      * 临时文件存放子路径，为FILE_PATH的子路径
      **/
-    public final static String TEMP_PATH = "temp";
+    public final static String TEMP_PATH = "temp/";
     /**
      * 下载文件存放子路径，为FILE_PATH的子路径
      **/
-    public final static String DOWNLOAD_PATH = "download";
+    public final static String DOWNLOAD_PATH = "download/";
     /**
      * 数据库的存放路径，为FILE_PATH的子路径
      **/
-    public final static String DATABASE_PATH = "database";
+    public final static String DATABASE_PATH = "database/";
     /**
      * 语音消息的存放路径，为FILE_PATH的子路径
      **/
-    public final static String VOICE_PATH = "voice";
+    public final static String VOICE_PATH = "voice/";
+
+    private static String ROOT_PATH = ROOT_DEFAULT_PATH;
+
+    public static void setRootPath(String rootPath) {
+        ROOT_PATH = rootPath;
+    }
 
     /**
      * 获取缓存路径
@@ -131,7 +137,7 @@ public class FileUtils {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
             file = new File(Environment.getExternalStorageDirectory().getPath(),
-                    new File(ROOT_DEFAULT_PATH, path).getPath());
+                    new File(ROOT_PATH, path).getPath());
         } else {
             file = new File(context.getFilesDir().getPath(), path);
         }
