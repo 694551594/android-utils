@@ -6,7 +6,7 @@ import android.widget.EditText;
 
 public class EditTextUtils {
 
-    public static void onTextToEnd(EditText editText) {
+    public static void setSelectionToEnd(EditText editText) {
         CharSequence text = editText.getText();
         if (text instanceof Spannable) {
             Spannable spanText = (Spannable) text;
